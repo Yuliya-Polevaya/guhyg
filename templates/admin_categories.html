@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Категории</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+</head>
+<body>
+    <div class="admin-wrapper" style="align-items: flex-start; padding-top: 30px;">
+        <div class="admin-card" style="max-width: 800px;">
+            <a href="/admin_panel" style="text-decoration: none;">← Назад в меню</a>
+            <h3>Категории</h3>
+
+            <form method="POST" action="/admin_panel/categories" style="margin-bottom: 20px;">
+                <input type="text" name="title" placeholder="Название" required>
+                <input type="text" name="comment" placeholder="Комментарий">
+                <button type="submit"">Добавить</button>
+            </form>
+
+            <table style="width: 100%; border-collapse: collapse;">
+                {% for cat in items %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;"><b>{{ cat[1] }}</b> ({{ cat[2] }})</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

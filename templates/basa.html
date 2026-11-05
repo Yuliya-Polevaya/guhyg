@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+    <title>Главная</title>
+</head>
+<body>
+    <!-- Меню -->
+    <div class="vcpl_menu">
+        <ul id="navbar">
+            <li><a href="{{ url_for('main') }}">Главная</a></li>
+            <li><a href="{{ url_for('news') }}">Новости</a></li>
+            <li><a href="{{ url_for('prod') }}">Продукция</a></li>
+            <li><a href="{{ url_for('blog') }}">Наш блог</a></li>
+            <li><a href="{{ url_for('onas') }}">О нас</a></li>
+        </ul>
+    </div>
+
+    <div>{% block main %}{% endblock main %}</div>
+    <div>{% block news %}{% endblock news %}</div>
+    <div>{% block prod %}{% endblock prod %}</div>
+    <div>{% block blog %}{% endblock blog %}</div>
+    <div>{% block onas %}{% endblock onas %}</div>
+
+
+    <script src="{{ url_for('static', filename='js.js')}}"></script>
+
+</body>
+</html>

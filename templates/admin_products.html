@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+</head>
+<body>
+    <div class="admin-wrapper" style="align-items: flex-start; padding-top: 30px;">
+        <div class="admin-card" style="max-width: 800px;">
+            <a href="/admin_panel" style="text-decoration: none;">← Назад в меню</a>
+            <h3>Товары</h3>
+
+            <form method="POST" action="/admin_panel/products" style="margin-bottom: 20px;">
+                <input type="text" name="p_name" placeholder="Название" required style="padding: 10px; margin: 5px 0; width: calc(100% - 22px); box-sizing: border-box;">
+                <input type="number" name="p_sale" placeholder="Цена" required style="padding: 10px; margin: 5px 0; width: calc(100% - 22px); box-sizing: border-box;">
+                
+                <!-- ДОБАВЛЕНО: Поле для ввода материала -->
+                <input type="text" name="material" placeholder="Материал" style="padding: 10px; margin: 5px 0; width: calc(100% - 22px); box-sizing: border-box;">
+                
+                <select name="p_cat_id" required style="padding: 10px; margin: 5px 0; width: calc(100% + 2px); box-sizing: border-box;">
+                    <option value="">-- Категория --</option>
+                    {% for cat in categories %}
+                    <option value="{{ cat[0] }}">{{ cat[1] }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" style="padding: 10px 20px; margin-top: 10px; cursor: pointer;">Добавить</button>
+            </form>
+
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background: #f4f4f4;">
+                    <th style="padding: 10px;">Название</th>
+                    <th style="padding: 10px;">Цена</th>
+                    <th style="padding: 10px;">Материал</th> <!-- ДОБАВЛЕНО: Заголовок колонки -->
+                </tr>
+                {% for p in items %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">{{ p[1] }}</td>
+                    <td style="padding: 10px;">{{ p[2] }} руб.</td>
+                    <td style="padding: 10px;">{{ p[3] if p|length > 3 else 'Не указан' }}</td> <!-- ДОБАВЛЕНО: Вывод материала -->
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

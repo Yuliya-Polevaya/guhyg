@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <div class="admin-card" >
+            <h2>Администрирование сайта</h2>
+            <p>Вы вошли как: <b>{{ session['admin_name'] }}</b></p>
+            <hr style="margin: 20px 0;">
+
+            <!-- Ссылки на разделы (как в Django) -->
+            <h3>MYPROJ</h3>
+            <a href="/admin_panel/categories" class="menu-item">
+                Categories <span>+ Добавить / ✎ Изменить</span>
+            </a>
+            <a href="/admin_panel/products" class="menu-item">
+                Products <span>+ Добавить / ✎ Изменить</span>
+            </a>
+            <a href="/admin_panel/users" class="menu-item">
+                User_profiles <span>+ Добавить / ✎ Изменить</span>
+            </a>
+
+            <div style="margin-top: 30px;">
+                <a href="{{ url_for('logout') }}" class="btn-logout">Выйти</a>
+                <a href="{{ url_for('main') }}" style="margin-left: 15px;text-decoration: none;">На сайт</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

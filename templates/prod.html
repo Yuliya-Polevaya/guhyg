@@ -1,0 +1,49 @@
+{% extends 'basa.html' %}
+
+{% block prod %}
+<div class="catalog-container">
+    
+    <!-- Секция категорий -->
+    <section class="catalog-section">
+        <h2>📂 Категории</h2>
+        <div class="categories-grid">
+            {% for u in name2 %}
+            <div class="info-card category-card">
+                <h3>{{ u[1] }}</h3>
+                <p>{{ u[2] }}</p>
+            </div>
+            {% else %}
+            <p>Категории пока не добавлены.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Секция товаров -->
+    <section class="catalog-section">
+        <h2>🛍️ Наши продукты</h2>
+        <div class="products-grid">
+            {% for user in name %}
+            <div class="info-card product-card">
+                <div class="product-header">
+                    <h3>{{ user[1] }}</h3>
+                    <span class="category-badge">{{ user[6] }}</span>
+                </div>
+                
+                <div class="product-price">{{ user[2] }} ₽</div>
+                
+                <div class="product-details">
+                    <p><strong>Материал:</strong> {{ user[3] or 'Не указан' }}</p>
+                    <p><strong>Дата производства:</strong> {{ user[4] }}</p>
+                    <p><strong>В наличии:</strong> {{ user[5] }} шт.</p>
+                </div>
+            </div>
+            {% else %}
+            <p>Товары пока не добавлены.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{% endblock prod %}
